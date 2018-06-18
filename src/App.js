@@ -4,6 +4,7 @@ import './App.css';
 import treedata from './treedata'
 import SortableTree from 'react-sortable-tree';
 import 'react-sortable-tree/style.css';
+import SimpleMediaCard from './components/Card';
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class App extends Component {
     Object.keys(treedata).forEach(function(key) {
       arr.push(treedata[key]);
     });
-
+    
   function convert(array){
     var map = {};
     for(var i = 0; i < array.length; i++){
@@ -43,11 +44,39 @@ class App extends Component {
 }
 
 var r = convert(arr);
+var secondlevel = [];
+
+for(var i = 0; i < r.length; i++) {
+  var object = r[i];
+  if(object.children.length > 0) {
+    var childrenarr = [];
+    Object.keys(object.children).forEach(function(key) {
+      childrenarr.push(object.children[key]);
+    });
+    secondlevel.push(childrenarr);
+  }
+}
+
+console.log(secondlevel);
+
 
 const objects = r.map(
         (object) => 
-    <li key={object.id}>{object.title}</li>
-    );
+        <div>
+          <SimpleMediaCard title={object.title}/>
+          <Greeting hasChildren={object.children.length}/>
+          </div>
+          );
+
+var childrenarr = []
+
+function Greeting(props) {
+  const hasChildren = props.hasChildren;
+  if (hasChildren > 0) {
+    return <SimpleMediaCard title={object.children[0].title}/>;
+  }
+  return <p></p>;
+}
   
     return (
       <div className="App">
@@ -58,7 +87,9 @@ const objects = r.map(
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <p>{objects}</p>
+        <div>
+        {objects}
+        </div>
       </div>
     );
   }
