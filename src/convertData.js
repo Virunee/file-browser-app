@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import treedata from './treedata';
 
 var arr = [];
@@ -27,7 +26,5 @@ var arr = [];
 
 }
 
-export var r = convert(arr)[0];
-
-export var s = JSON.stringify(r);
+export var convertedTreeData = convert(arr);
 
