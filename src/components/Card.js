@@ -16,11 +16,14 @@ import TableRow from '@material-ui/core/TableRow';
 const styles = {
   card: {
     maxWidth: 345,
+    backgroundColor: "white",
+    padding: '10px',
   },
   media: {
     maxWidth: 300,
     paddingTop: '5%', // 16:9
   },
+  maxWidth: 345,
 };
 
 function SimpleMediaCard(props) {
@@ -35,19 +38,10 @@ function SimpleMediaCard(props) {
       img
     } = props;
     return (
-      <div>
-        <Card className={classes.card}>
-          <img
-            className={classes.media}
-            src={img}
-            title="Contemplative Reptile"
-          />
-          <CardContent>
+      <div className={classes.card}>
             <Typography gutterBottom variant="headline" component="h2">
               {title}
             </Typography>
-          </CardContent>
-        </Card>
       </div>
     );
   }

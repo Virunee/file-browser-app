@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import treedata from './treedata'
 import {convertedTreeData} from './convertData';
 import 'react-sortable-tree/style.css';
 import SimpleMediaCard from './components/Card';
+
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class App extends Component {
   constructor(props) {
@@ -28,8 +36,14 @@ class App extends Component {
         (object) => {
           return object.children.length > 0 ?
           <div>
+            <ExpansionPanel>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <SimpleMediaCard title={object.title}/>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
           <RenderChildren object={object.children}/>
+          </ExpansionPanelDetails>
+          </ExpansionPanel>
           </div>
           :
           <div>
@@ -43,12 +57,8 @@ class App extends Component {
     return (
       <div className="App">
       <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-title">Welcome to React</h1>
+      <h1 className="App-title">Virunee's File Browser</h1>
       </header>
-      <p className="App-intro">
-      To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
       <div>
       {RenderCards(convertedTreeData)}
       </div>
