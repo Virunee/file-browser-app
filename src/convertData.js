@@ -5,7 +5,28 @@ var arr = [];
       arr.push(treedata[key]);
     });
 
-  function convert(array){
+function search(array, searchterm) {
+  var result = [];
+  for(var i=0;i<array.length;i++) {
+    if(searchterm === array[i].title) {
+      result.unshift(array[i]);
+      if (array[i].parentId) {
+        var parent = array[i].parentId;
+        for(var i=0;i<array.length;i++) {
+          if(parent === array[i].id) {
+            result.unshift(array[i]);
+          }
+
+        }
+      }
+    }
+  }
+  return result
+}
+
+var searchResult = search(arr, "Due Diligence");
+
+  function list_to_tree(array){
     var map = {};
     for(var i = 0; i < array.length; i++){
         var obj = array[i];
@@ -21,10 +42,10 @@ var arr = [];
         }
         map[parent].children.push(obj);
     }
-
+    console.log(map);
     return map['-'].children;
 
 }
 
-export var convertedTreeData = convert(arr);
+export var convertedTreeData = list_to_tree(arr);
 

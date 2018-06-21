@@ -2,27 +2,62 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
-  height: 150px;
   padding: 20px;
   color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.browserContainer {
+  width: 75%;
+  margin: auto;
+  background-color: white;
+  box-shadow: 2px 2px 5px #00000030;
+  font-size: 0px;
+}
+
+.folder {
+  margin-bottom:10px;
+}
+
+.card {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+#cardsPanel .folder {
+  width: 20%;
+  margin: 20px;
+  display: inline;
+}
+
+div[class^="MuiExpansionPanelDetails"] {
+  display: inline !important;
+}
+
+
+div[class^="MuiExpansionPanelDetails"] .cardsPanel {
+  display: inline;
+}
+
+div[class^="MuiCollapse-wrapperInner"] {
+  width: 90%;
+  margin-left: 5%;
+}
+
+div[class^=".MuiExpansionPanelSummary"] {
+  align-items: center;
+  vertical-align: middle;
+}
+
+.foo .mui-icon {
+  vertical-align: middle;
 }
