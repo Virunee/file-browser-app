@@ -1,9 +1,19 @@
 import { connect } from 'react-redux'
-import SearchBar from '../components/SearchBar'
+import SearchComponent from '../components/SearchComponent'
 
-const mapStateToProps = state => ({
-  searchValue: state.value
-})
-export default connect(
-  mapStateToProps
-)(SearchBar)
+import { submitData, updateValue } from '../actions';
+
+export const mapStateToProps = (state) => ({
+  submittedValue: state
+});
+
+const mapDispatchToProps = dispatch => ({
+  submitData: (value) => {
+    dispatch(submitData(value));
+  },
+  updateValue: (value) => {
+    dispatch(updateValue(value));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchComponent);

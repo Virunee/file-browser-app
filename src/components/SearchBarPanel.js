@@ -1,8 +1,9 @@
 import React from 'react';
 
-import TextField from '@material-ui/core/TextField';
+import InputField from './InputField';
+import Button from './Button';
 
-class SearchBar extends React.Component {
+class SearchBarPanel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {value: ''};
@@ -16,26 +17,27 @@ class SearchBar extends React.Component {
     }
     
     handleSubmit(event) {
-       //dispatch(updateValue(this.state.value));
-       console.log(this.state.value);
-       //input.value = "";
+        debugger;
+       this.props.submit(event.target.querySelector("#search".value));
+       console.log("handleSubmit firing");
         event.preventDefault();
     }
     
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-            <TextField
+            <InputField
             id="search"
             label="Search field"
             type="search"
             margin="normal"
-            value={this.state.value} onChange={this.handleChange}
+            value={this.state.value}
+            onChange={this.handleChange}
             />
-            <button type="submit">Search</button>
+            <Button id="submitButton" type="submit" name="Search">Search</Button>
             </form>
         );
     }
 }
 
-export default SearchBar
+export default SearchBarPanel;

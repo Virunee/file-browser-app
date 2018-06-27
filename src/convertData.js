@@ -12,9 +12,9 @@ function search(array, searchterm) {
       result.unshift(array[i]);
       if (array[i].parentId) {
         var parent = array[i].parentId;
-        for(var i=0;i<array.length;i++) {
-          if(parent === array[i].id) {
-            result.unshift(array[i]);
+        for(var j=0;j<array.length;j++) {
+          if(parent === array[j].id) {
+            result.unshift(array[j]);
           }
 
         }
@@ -24,7 +24,7 @@ function search(array, searchterm) {
   return result
 }
 
-var searchResult = search(arr, "Due Diligence");
+//var searchResult = search(arr, "Due Diligence");
 
   function list_to_tree(array){
     var map = {};

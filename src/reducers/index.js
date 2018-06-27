@@ -1,16 +1,20 @@
 import treedata from '../treedata'
+import { Map } from 'immutable';
+import { SUBMIT_VALUE, UPDATE_VALUE }  from '../actions';
 
 const initialState = {
-    treedata
+    treedata,
+    submittedValue: '',
+    submit: false
   }
 
-function reducer(state, action) {
-    if (typeof state === 'undefined') {
-        return initialState
-      }
-      // For now, don't handle any actions
-      // and just return the state given to us.
-      return state
+  export default function reducer (state = initialState, action) {
+    switch(action.type){
+      case UPDATE_VALUE:
+        return state.set('value', action.values);
+      case SUBMIT_VALUE:
+        return state.set('submit', true)
+      default:
+        return state;
     }
-
-  export default reducer
+  }
